@@ -41,7 +41,7 @@
     "lusca": "^1.7.0",
     "mailchecker": "^4.1.14",
     "moment": "^2.29.4",
-    "mongoose": "^6.2.8",
+    "mongoose": "^6.4.6",
     "morgan": "^1.10.0",
     "nanoid": "^4.0.0",
     "node-fetch": "2.6.0",
