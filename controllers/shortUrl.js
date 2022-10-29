@@ -5,10 +5,6 @@ const dns = require('dns');
 const fetch = require('node-fetch');
 
 
-//* @route   POST /shorten
-//* @desc    Create short URL
-//* @access  Public
-
 async function lookupPromise(domain) {
   return new Promise((resolve, reject) => {
     dns.lookup(domain, (err, address, family) => {
@@ -43,6 +39,10 @@ const urlNotDenylisted = (url) => {
 const validators = [
   urlNotDenylisted
 ];
+
+//* @route   POST /shorten
+//* @desc    Create short URL
+//* @access  Private
 
 exports.postShortUrl = async (req, res) => {
   const base = process.env.BASE_URL
@@ -79,6 +79,10 @@ exports.postShortUrl = async (req, res) => {
   }
 }
 
+//*@ route   GET /:slug
+//*@ desc    Redirect to long/original URL
+//*@ access  Private
+
 exports.getShortUrl = async (req, res) => {
   const { slug } = req.params
   try {
@@ -95,55 +99,3 @@ exports.getShortUrl = async (req, res) => {
     res.status(500).json({ message: 'Server error' })
   }
 }
-
-
-// exports.postShortUrl = async (req, res) => {
-//   let { longUrl, user, slug } = req.body
-//   const base = process.env.BASE_URL
-//   const { nanoid } = await import ('nanoid')
-
-
-//   if (validateUrl(longUrl)) {
-//     try {
-//       let url = await Url.find({ longUrl, user, slug })
-//       if (url) {
-//         res.json(url)
-//       } else {
-
-//         const url = new Url({
-//           longUrl,
-//           shortUrl,
-//           slug,
-//           date: new Date(),
-//           user,
-//         })
-//         const shortUrl = `${base}/${slug}`
-//         await url.save()
-//         res.json(url)
-//       }
-//     } catch (err) {
-//       console.error(err)
-//       res.status(500).json('Server Error')
-//     }
-//   } else {
-//     res.status(401).json('Invalid Url')
-//   }
-// }
-
-// exports.getShortUrl = async (req, res) => {
-//   try {
-//     const url = await Url.findOne({ slug: req.params.slug })
-//     if (url) {
-//       await Url.updateOne(
-//         { slug: req.params.slug },
-//         { $inc: { clickCounter: 1 } }
-//       )
-//       return res.redirect(url.longUrl)
-//     } else {
-//       res.status(404).json('No url found')
-//     } 
-//   } catch (err) {
-//     console.error(err)
-//     res.status(500).json('Server Error')
-//   }
-// }
