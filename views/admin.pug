@@ -2,8 +2,10 @@ extends layout
 
 block head
   link('rel'='stylesheet' href='https://unpkg.com/leaflet@1.9.2/dist/leaflet.css')
+  script(src='/js/lib/jquery.min.js')
   script(src='https://unpkg.com/leaflet@1.9.2/dist/leaflet.js')
   script(src='/js/countries.geo.js')
+  script(src="https://cdn.jsdelivr.net/npm/chart.js")
   style.
     #map {
       width: 100%;
@@ -21,12 +23,16 @@ block head
         margin: 0 0 5px;
         color: #777;
     }
+    #urlData {
+
+    }
 
 block content
   .pb-2.mt-2.mb-4.border-bottom
 
   h3 Admin Page
-
+  div
+    canvas#urlData
   p Here are the admin things.
   p ... Statistics of bad URLs being requested ...
   p ... Audit of shortened URLs being created, and by who ...
@@ -35,3 +41,4 @@ block content
   div#map
 
   script(src='/js/map.js')
+  script(src='/js/admin.js')
