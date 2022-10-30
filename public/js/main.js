@@ -40,10 +40,21 @@ $(document).ready(() => {
   const urlsCopyBtns = new ClipboardJS("[id^=copyUrlBtn]")
 
   // Messages and make the button blink
-  newUrlCopyBtn.on("success", function (e) {
+  newUrlCopyBtn.on("success", async function (e) {
     e.clearSelection();
+    $("#copy-btn").prop("innerText", "Copied!");
+    await delay(1000);
+    $("#copy-btn").prop("innerText", "Copy to clipboard");
   });
+  
+  urlsCopyBtns.on("success", async function (e) {
+    e.clearSelection();
+    $(`#${e.trigger.id}`).children(".fa-clipboard").toggleClass("fa-clipboard").toggleClass("fa-solid fa-check");
+    await delay(1000);
+    $(`#${e.trigger.id}`).children(".fa-check").toggleClass("fa-solid fa-check").toggleClass("fa-clipboard");
+  })
 });
+
 
 async function getURL(userURL, currentUserEmail, userSlug) {
   const options = {
@@ -59,4 +70,8 @@ async function getURL(userURL, currentUserEmail, userSlug) {
   const json = await response.json();
 
   return json;
+}
+
+function delay(time) {
+  return new Promise(resolve => setTimeout(resolve, time));
 }
