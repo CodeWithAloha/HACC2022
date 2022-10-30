@@ -36,34 +36,13 @@ $(document).ready(() => {
 
   });
 
-  $("#copy-btn").on("click", () => {
-    // const copyText = document.getElementById("shortUrl").innerText;
+  const newUrlCopyBtn = new ClipboardJS("#copy-btn")
+  const urlsCopyBtns = new ClipboardJS("[id^=copyUrlBtn]")
 
-    // const textareaEl = document.createElement("textarea")
-    // textareaEl.value = copyText;
-    // // Select the text field
-    // textareaEl.select();
-    // textareaEl.setSelectionRange(0, 99999); // For mobile devices
-
-    // // Copy the text inside the text field
-    // navigator.clipboard.writeText(textareaEl.value);
-
-    // // Alert the copied text
-    // alert("Copied the text: " + textareaEl.value);
-
-    // textareaEl.remove();
-
-
-  })
-
-  // $("[id^=copyUrlBtn]").on("click", (e) => {
-  //   const urlID = e.currentTarget.id
-  //   const indexNum = urlID.substring(urlID.lastIndexOf("-") + 1, urlID.length);
-  //   const link = $(`#shortLink-${indexNum}`).prop("href");
-  //   navigator.clipboard.writeText(link);
-  //   alert("Copied the text: " + link);
-  // })
-
+  // Messages and make the button blink
+  newUrlCopyBtn.on("success", function (e) {
+    e.clearSelection();
+  });
 });
 
 async function getURL(userURL, currentUserEmail, userSlug) {
