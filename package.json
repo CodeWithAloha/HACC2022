@@ -47,7 +47,7 @@
     "nanoid": "^4.0.0",
     "node-fetch": "2.6.0",
     "node-quickbooks": "^2.0.39",
-    "node-sass": "^7.0.1",
+    "node-sass": "^7.0.3",
     "node-sass-middleware": "^1.0.1",
     "nodemailer": "^6.7.3",
     "nodemailer-sendgrid": "^1.0.3",
