@@ -32,7 +32,8 @@ block content
   .pb-2.mt-2.mb-4.border-bottom
 
   h3 Admin Page
-  table(id="table_id" class="display")
+  h4 Malicious URL Data Table
+  table(id="table_id" class="display").my-5
     thead
       tr
         th(scope="col") User
@@ -47,13 +48,20 @@ block content
             p= susEvent.susUrl
           td 
             p= new Date(parseInt(susEvent.date)).toLocaleString()
-  div.container
+  h4 URL Data by Country
+  div.my-5
     .row
-      div.col-sm#map
-      div.col-sm.align-self-center.countryDataContainer
+      div#map.col
+      div.col.align-self-center
         canvas#urlCountryData
-  div
-    canvas#urlSecurityData
+        p The urls by country chart displays the number of urls shortened by each country of origin.
+  h4 Https vs Http
+  div.my-5
+    .row
+      div.col
+        canvas#urlSecurityData
+      div.col.align-self-center
+        p The http vs https chart displays the difference in counts between https routes and http routes. This helps provide insight on whether users are shortening routes that have SSL enabled. 
 
 
   script(src='/js/map.js')
