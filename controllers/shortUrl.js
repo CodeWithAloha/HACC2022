@@ -106,21 +106,24 @@ exports.postShortUrl = async (req, res) => {
 }
 
 exports.getShortUrl = async (req, res) => {
-  const { slug, expirationDate } = req.params;
+  const { slug } = req.params;
   try {
-    const url = await Url.findOne({ slug, expirationDate });
-    const now = new Date();
-    const expiration = new Date(expirationDate);
+    const url = await Url.findOne({ slug });
 
-    if (now.getTime() > expiration.getTime()) {
-      res.redirect('/urls');
-    } else {
-      return res.status(404).json({
-        error: true,
-        message: 'Url not found'
-      });
+    if (url.expirationDate) {
+      const expiration = new Date(url.expirationDate);
+      const now = new Date();
+
+      if (now.getTime() > expiration.getTime()) {
+        return res.status(401).json({
+          error: true,
+          message: 'Url expired'
+        });
+      }
+
     }
-      if (url) {
+
+    if (url) {
         url.clickCounter++;
         await url.save();
         return res.redirect(url.longUrl);
