@@ -23,10 +23,7 @@ block head
         margin: 0 0 5px;
         color: #777;
     }
-    .countryDataContainer{
-      align-self: "end";
-      height: "500px"
-    }
+    
 
 block content
   .pb-2.mt-2.mb-4.border-bottom
@@ -35,7 +32,7 @@ block content
   div.container
     .row
       div.col-sm#map
-      div.col-sm.countryDataContainer
+      div.col-sm.align-self-center.countryDataContainer
         canvas#urlCountryData
   div
     canvas#urlSecurityData
