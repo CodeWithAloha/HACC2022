@@ -11,6 +11,15 @@ const Url = require('../models/Url')
     });
   };
 
+exports.getURLs = (req, res) => {
+  Url.find({}, function(err, urls) {
+    if (err) {
+      console.error(err);
+    }
+    res.json(urls)
+  })
+}
+
 exports.country = async (req, res) => {
   const countryMap = {};
 
