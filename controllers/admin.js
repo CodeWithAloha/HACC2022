@@ -4,10 +4,13 @@
  */
 
 const Url = require('../models/Url')
+const SusUrlEvent = require('../models/SusUrlEvent');
 
- exports.index = (req, res) => {
+ exports.index = async(req, res) => {
+  const susEvents = await SusUrlEvent.find({})
     res.render('admin', {
-      title: 'Admin'
+      title: 'Admin',
+      susEvents: susEvents
     });
   };
 

@@ -67,4 +67,5 @@ const filteredData =  getCountries();
 
 const urls = getURLs();
 
+$('#table_id').DataTable();
 

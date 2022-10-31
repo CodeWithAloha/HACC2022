@@ -6,6 +6,9 @@ block head
   script(src='https://unpkg.com/leaflet@1.9.2/dist/leaflet.js')
   script(src='/js/countries.geo.js')
   script(src="https://cdn.jsdelivr.net/npm/chart.js")
+  link('rel'="stylesheet" href='https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css')
+  script(src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.js")
+  
   style.
     #map {
       width: 100%;
@@ -29,6 +32,21 @@ block content
   .pb-2.mt-2.mb-4.border-bottom
 
   h3 Admin Page
+  table(id="table_id" class="display")
+    thead
+      tr
+        th(scope="col") User
+        th(scope="col") Long Url
+        th(scope="col") Date
+    tbody
+      each susEvent in susEvents
+        tr 
+          td
+            p= susEvent.user 
+          td 
+            p= susEvent.susUrl
+          td 
+            p= new Date(parseInt(susEvent.date)).toLocaleString()
   div.container
     .row
       div.col-sm#map
