@@ -23,17 +23,23 @@ block head
         margin: 0 0 5px;
         color: #777;
     }
+    .countryDataContainer{
+      align-self: "end";
+      height: "500px"
+    }
 
 block content
   .pb-2.mt-2.mb-4.border-bottom
 
   h3 Admin Page
-  div
-    canvas#urlCountryData
+  div.container
+    .row
+      div.col-sm#map
+      div.col-sm.countryDataContainer
+        canvas#urlCountryData
   div
     canvas#urlSecurityData
 
-  div#map
 
   script(src='/js/map.js')
   script(src='/js/admin.js')
