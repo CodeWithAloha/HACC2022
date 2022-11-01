@@ -14,14 +14,16 @@ block content
     .alert.alert-success.invisible.d-none#success-message
     label.col-form-label.d-block(for='name') Customize your link
     input.form-control.mb-3(type='text', name='slug', placeholder='NewcomersGuide', autofocus)
-    label.col-form-label.d-block(for='expiration') Choose an expiration for your new link
+    label.col-form-label.d-block(for='expirationDate') Customize the link duration
     //- input.form-control.mb-3(type='date', name='expirationDate', required pattern="\d{4}-\d{2}-\d{2}" min='2022-10-31', max='2024-10-31', autofocus)
-    select.form-control.mb-3(type='date' name='expirationDate')
-      option(value=1, selected=true) ** Days till expiration **
-      option(value=7) 7 days
-      option(value=14) 14 days
-      option(value=1) 21 days
-      option(value=1) 42 days
+    select.form-control.mb-3(name='expirationDate')
+      option(value=1 selected=true) ** Expires in 1 day  **
+      option(value=7) ** Expires in 7 days  **
+      option(value=14) ** Expires in 14 days  **
+      option(value=21) ** Expires in 21 days  **
+      option(value=42) ** Expires in 42 days **
+      option(value=90) ** Expires in 90 days **
+      option(value=180) ** Expires in 180 days **
     span.validity 
     button.btn.btn-primary.w-100#submit-btn
       i.far.fa-envelope.fa-sm

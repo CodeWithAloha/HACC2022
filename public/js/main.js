@@ -10,12 +10,12 @@ $(document).ready(() => {
     const userLongURL = $('input[name="longUrl"]').val();
     const currentUserEmail = $('p#currentUserEmail').text();
     const userSlug = $('input[name="slug"]').val();
-    const ShortLinkEpirationDate = $('input[name="expirationDate"]').val();
+    const shortLinkEpirationDate = $('select[name="expirationDate"]').val();
 
     const {
       error, message,
       slug, longUrl, shortUrl, expirationDate, clickCounter, date
-    } = await getURL(userLongURL, currentUserEmail, userSlug, ShortLinkEpirationDate);
+    } = await getURL(userLongURL, currentUserEmail, userSlug, shortLinkEpirationDate);
 
     console.log(error);
     console.log(message);
@@ -106,13 +106,13 @@ function addSuccess()
   $('#success-message').text("✅" + "Valid URL!");
 }
 
-async function getURL(userURL, currentUserEmail, userSlug, ShortLinkEpirationDate) {
+async function getURL(userURL, currentUserEmail, userSlug, shortLinkEpirationDate) {
   const options = {
     method: "POST",
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ slug: userSlug, longUrl: userURL, user: currentUserEmail, expirationDate: ShortLinkEpirationDate })
+    body: JSON.stringify({ slug: userSlug, longUrl: userURL, user: currentUserEmail, expirationDate: shortLinkEpirationDate })
   }
   console.log(userSlug);
   const response = await fetch("/shorten", options)
