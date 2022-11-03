@@ -28,27 +28,17 @@ $(document).ready(() => {
     $("#urlInput").removeClass("border border-2 border-danger")
     $('#result').removeClass('invisible');
     $('#result').removeClass('d-none');
+    $('#qr-btn').removeClass('invisible');
+    $('#qrbtn').removeClass('d-none');
+    // $('#qrcode-container').removeClass('invisible');
+    $('#qrcode-container').removeClass('d-none');
     $('#copy-btn').removeClass('invisible');
     $('#copy-btn').removeClass('d-none');
-    $('#qr-code').removeClass('invisible');
-    $('#qr-code').removeClass('d-none');
 
     $('#shortUrl').text(shortUrl);
     // $("body").append(slugEl, shortURLEl, longURLEL, clickCounterEl, dateEl);
 
   });
-
-  function generate(shortUrl) {
-    const qrcode = new QRCode(document.querySelector('.qr-code'), {
-      text: `${shortUrl}`,
-      width: 128,
-      height: 128,
-      colorDark: '#000000',
-      colorLight: '#ffffff',
-      correctLevel: QRCode.CorrectLevel.H
-    })
-  }  
-
 
   const newUrlCopyBtn = new ClipboardJS("#copy-btn")
   const urlsCopyBtns = new ClipboardJS("[id^=copyUrlBtn]")
