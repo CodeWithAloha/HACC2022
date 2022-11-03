@@ -10,12 +10,12 @@ $(document).ready(() => {
     const userLongURL = $('input[name="longUrl"]').val();
     const currentUserEmail = $('p#currentUserEmail').text();
     const userSlug = $('input[name="slug"]').val();
-    const ShortLinkEpirationDate = $('input[name="expirationDate"]').val();
+    const shortLinkEpirationDate = $('input[name="expirationDate"]').val();
 
     const {
       error, message,
       slug, longUrl, shortUrl, expirationDate, clickCounter, date
-    } = await getURL(userLongURL, currentUserEmail, userSlug, ShortLinkEpirationDate);
+    } = await getURL(userLongURL, currentUserEmail, userSlug, shortLinkEpirationDate);
 
     console.log(error);
     console.log(message);
@@ -30,11 +30,25 @@ $(document).ready(() => {
     $('#result').removeClass('d-none');
     $('#copy-btn').removeClass('invisible');
     $('#copy-btn').removeClass('d-none');
+    $('#qr-code').removeClass('invisible');
+    $('#qr-code').removeClass('d-none');
 
     $('#shortUrl').text(shortUrl);
     // $("body").append(slugEl, shortURLEl, longURLEL, clickCounterEl, dateEl);
 
   });
+
+  function generate(shortUrl) {
+    const qrcode = new QRCode(document.querySelector('.qr-code'), {
+      text: `${shortUrl}`,
+      width: 128,
+      height: 128,
+      colorDark: '#000000',
+      colorLight: '#ffffff',
+      correctLevel: QRCode.CorrectLevel.H
+    })
+  }  
+
 
   const newUrlCopyBtn = new ClipboardJS("#copy-btn")
   const urlsCopyBtns = new ClipboardJS("[id^=copyUrlBtn]")
