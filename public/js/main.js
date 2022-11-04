@@ -29,8 +29,8 @@ $(document).ready(() => {
     $('#result').removeClass('invisible');
     $('#result').removeClass('d-none');
     $('#qr-btn').removeClass('invisible');
-    $('#qrbtn').removeClass('d-none');
-    // $('#qrcode-container').removeClass('invisible');
+    $('#qr-btn').removeClass('d-none');
+    $('#qrcode-container').removeClass('invisible');
     $('#qrcode-container').removeClass('d-none');
     $('#copy-btn').removeClass('invisible');
     $('#copy-btn').removeClass('d-none');
