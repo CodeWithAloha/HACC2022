@@ -26,10 +26,11 @@ block content
     hr
     div.d-flex.justify-content-between.align-items-center
       p.mb-0#shortUrl 
-      div.d-none#qrcode-container 
-        div#qrcode
-      button.btn.btn-outline-dark.shadow-sm.invisible.d-none#qr-btn(onClick='generateQRCode()') Generate QR Code
       button.btn.btn-outline-dark.shadow-sm.invisible.d-none#copy-btn(data-clipboard-target="#shortUrl") Copy to clipboard
+      div.invisible.d-none#qrcode-container 
+        div#qrcode
+      button.btn.btn-outline-dark.shadow-sm.invisible.d-none#qr-btn(onClick='generateQRCode()') Generate QRCode 
+        i.far.fa-qrcode
   br
   section.card.rounded-10.pb-4.pt-2.mt-4.px-5.mx-auto
     h1.border-bottom.pb-2.text-center Guidelines
@@ -43,5 +44,6 @@ block content
             span.fas.fa-check.pe-1
             span.fw-bold https://www.google.com
         li An alias is generated if you do not customize the link. 
+        li Set an optional expiration date for your shortened link.                                             
 
     script(src='/js/qrcode.js')
