@@ -6,16 +6,17 @@ $(document).ready(() => {
     $('#error-message').addClass('d-none');
     $('#result').addClass('invisible');
     $('#result').addClass('d-none');
+    $('#qrcode').empty();
 
     const userLongURL = $('input[name="longUrl"]').val();
     const currentUserEmail = $('p#currentUserEmail').text();
     const userSlug = $('input[name="slug"]').val();
-    const ShortLinkEpirationDate = $('input[name="expirationDate"]').val();
+    const shortLinkEpirationDate = $('input[name="expirationDate"]').val();
 
     const {
       error, message,
       slug, longUrl, shortUrl, expirationDate, clickCounter, date
-    } = await getURL(userLongURL, currentUserEmail, userSlug, ShortLinkEpirationDate);
+    } = await getURL(userLongURL, currentUserEmail, userSlug, shortLinkEpirationDate);
 
     console.log(error);
     console.log(message);
@@ -28,16 +29,19 @@ $(document).ready(() => {
     $("#urlInput").removeClass("border border-2 border-danger")
     $('#result').removeClass('invisible');
     $('#result').removeClass('d-none');
+    $('#qr-btn').removeClass('invisible');
+    $('#qr-btn').removeClass('d-none');
+    $('#qrcode-container').removeClass('invisible');
+    $('#qrcode-container').removeClass('d-none');
     $('#copy-btn').removeClass('invisible');
     $('#copy-btn').removeClass('d-none');
-
     $('#shortUrl').text(shortUrl);
-    // $("body").append(slugEl, shortURLEl, longURLEL, clickCounterEl, dateEl);
 
   });
 
   const newUrlCopyBtn = new ClipboardJS("#copy-btn")
   const urlsCopyBtns = new ClipboardJS("[id^=copyUrlBtn]")
+  const generateQRBtn = document.getElementById("qr-btn");
 
   // Messages and make the button blink
   newUrlCopyBtn.on("success", async function (e) {
@@ -106,13 +110,13 @@ function addSuccess()
   $('#success-message').text("✅" + "Valid URL!");
 }
 
-async function getURL(userURL, currentUserEmail, userSlug, ShortLinkEpirationDate) {
+async function getURL(userURL, currentUserEmail, userSlug, shortLinkEpirationDate) { //* fixing param casing
   const options = {
     method: "POST",
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ slug: userSlug, longUrl: userURL, user: currentUserEmail, expirationDate: ShortLinkEpirationDate })
+    body: JSON.stringify({ slug: userSlug, longUrl: userURL, user: currentUserEmail, expirationDate: shortLinkEpirationDate }) //* fixing param casing
   }
   console.log(userSlug);
   const response = await fetch("/shorten", options)

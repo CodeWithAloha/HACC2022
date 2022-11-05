@@ -14,7 +14,7 @@ block content
     .alert.alert-success.invisible.d-none#success-message
     label.col-form-label.d-block(for='name') Customize your link
     input.form-control.mb-3(type='text', name='slug', placeholder='NewcomersGuide', autofocus)
-    label.col-form-label.d-block(for='expiration') Choose an expiration date for your new link
+    label.col-form-label.d-block(for='expiration') Choose an expiration date for your link
     input.form-control.mb-3(type='date', name='expirationDate', required pattern="\d{4}-\d{2}-\d{2}" min='2022-10-31', max='2024-10-31', autofocus)
     span.validity 
     button.btn.btn-primary.w-100#submit-btn
@@ -27,6 +27,10 @@ block content
     div.d-flex.justify-content-between.align-items-center
       p.mb-0#shortUrl 
       button.btn.btn-outline-dark.shadow-sm.invisible.d-none#copy-btn(data-clipboard-target="#shortUrl") Copy to clipboard
+      div.invisible.d-none#qrcode-container 
+        div#qrcode
+      button.btn.btn-outline-dark.shadow-sm.invisible.d-none#qr-btn(onClick='generateQRCode()') Generate QRCode 
+        i.fa-solid.fa-qrcode
   br
   section.card.rounded-10.pb-4.pt-2.mt-4.px-5.mx-auto
     h1.border-bottom.pb-2.text-center Guidelines
@@ -39,5 +43,8 @@ block content
             br
             span.fas.fa-check.pe-1
             span.fw-bold https://www.google.com
-        li An alias is generated if you do not customize the link.
+        li An alias is generated if you do not customize the link. 
+        li Set an optional expiration date for your shortened link.                                             
 
+    script(src='/js/qrcode.js')
+    
