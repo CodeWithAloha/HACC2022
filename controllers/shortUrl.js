@@ -27,7 +27,7 @@ exports.checkURL = (req, res) => {
 }
 
 exports.postShortUrl = async (req, res) => {
-	const base = 'https://hacc.bobbynoodles.com'
+	const base = 'https://menehune-url.bobbynoodles.com'
 	const { nanoid } = await import('nanoid')
 	let { slug, longUrl, expirationDate, user } = req.body
 
@@ -74,7 +74,7 @@ exports.postShortUrl = async (req, res) => {
 		if (url) {
 			url.shortUrl = url.shortUrl.replace(
 				'http://localhost:8080',
-				'https://hacc.bobbynoodles.com'
+				'https://menehune-url.bobbynoodles.com'
 			)
 			return res.json(url)
 		} else {

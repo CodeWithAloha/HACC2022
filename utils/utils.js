@@ -31,7 +31,7 @@ const fileNotDenyListed = (url) => {
 
 const urlNotDenylisted = (url) => {
 	const denylist = [
-		'hacc.bobbynoodles.com', // Prevent recursive shortening
+		'menehune-url.bobbynoodles.com', // Prevent recursive shortening
 		'localhost', // Prevent self destruction
 		'4chan.org', // Hackers known as 4chan
 		'reddit.com',
