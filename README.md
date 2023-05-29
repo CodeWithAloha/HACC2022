@@ -1,4 +1,4 @@
-<h1 align="center">Menehune URL Compressor</h1>
+<h1 align="center">Menehune URL Shortener</h1>
 
 <div align="center">
 	:moyai:
@@ -9,7 +9,7 @@
 
 <div align="center">
   <h3>
-  	<a href="https://menehune.azurewebsites.net/">
+  	<a href="https://menehune-url.bobbynoodles.com/">
       Website
     </a>
   	<span> | </span>
@@ -20,43 +20,44 @@
 </div>
 
 ### Philosophy
-External URL shorteners are blocked by the states network due to people using the service to send malicious links. Menehune URL Shortener was created to help increase trust and transparency when using a URL shortener.
+URL shorteners are known to be used to send malicious links, malware, and other malicous activities. Menehune URL Shortener was created to increase trust and transparency when using a URL shortener.
 
 ### Overview Solution
-Menehune is a URL shortening service with a focus on security and transparency. We offer transparency through open-sourcing the code and we offer security through malware detection and user accountability.
+Menehune is a URL shortening service with a focus on security and transparency. It provides transparency through open-sourcing the code and provides security through malware detection, blocking known bad IP addresses, and user accountability.
 
 ### Technical Details 
-This web application was built using HTML, CSS, & JavaScript and hosted with Azure. The front-end used Pug as our templating language and Bootstrap for our styling. We used NodeJS and Express to create our back-end and used MongoDB with Mongoose for our storage.
+This web application was built using HTML, CSS, & JavaScript. The front-end uses Pug as our templating language and Bootstrap for our styling. We used NodeJS and Express to create our back-end and used MongoDB with Mongoose for our storage. Deployment is done with docker on a local server.
 
 #### Prerequisites
 * Install [Git](https://git-scm.com/downloads)
 * Install [Node.js (with npm)](https://nodejs.org/en/download/).
 
 #### Setup
-* `git clone` this repository
+* 
+* Navigate to the folder where you would like to install the application
+* Run `git clone https://github.com/CodeforHawaii/HACC2022.git`
+* Navigate to the newly created HACC2022 folder
+* Run the following at the root of your project
 
 ```bash
 
-npm install # Install the required npm modules
+npm i # Install dependencies
 
-npm start
+npm start # Starts the server or 
+
+npm run dev # To start the developement server
 ```
 
-Go to `http://localhost:8080/` and create an account.
+Go to `http://localhost:8080/` in your browser and create an account.
 or
 Login using these test credentials:
 ```
-username: admin@gmail.com
-password: password
-
 username: test@gmail.com
 password: password
 ```
 
-The `Shortener` category is where you will be able to compress your URL. 
-You may provide an alias to customize the name of the compressed link.
+The `Shortener` page contains the url shortener along with options to set an expiration date and/or create a QR-code for the shortened link. 
 
-The `Urls` category is a dashboard containing all the compressed links. 
-You may edit or delete compressed links here.
+The `Urls` page is a user dashboard where you can view, edit, and delete your URL's. 
 
-The `Console` category is the admin area containing a map & graph of where compressed links redirect to. It contains statistics on how many compressed links are http vs https.
+The `Console` page is an admin only page where administrators can view and analyze data from users and the URL's that they have shortened. 
